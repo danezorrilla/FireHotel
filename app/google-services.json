@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "197230393490",
+    "firebase_url": "https://firehotel-b56d1.firebaseio.com",
+    "project_id": "firehotel-b56d1",
+    "storage_bucket": "firehotel-b56d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197230393490:android:f80f65c11227abdea4ce4b",
+        "android_client_info": {
+          "package_name": "com.bb.firehotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197230393490-0m4o6ptr7gr60718gog3bk6cf3mppodv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bb.firehotel",
+            "certificate_hash": "68b33d98de8ccb33e2954b7fcefb7210b3a9136b"
+          }
+        },
+        {
+          "client_id": "197230393490-pl0o443f5799npf4q1lk3420rrc6e05f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS7qemMvxda4wkCb1VsfMnpzNWs_6odNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197230393490-pl0o443f5799npf4q1lk3420rrc6e05f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
