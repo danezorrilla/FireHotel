@@ -22,6 +22,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 public class GuestViewModel extends AndroidViewModel {
 
@@ -29,7 +30,7 @@ public class GuestViewModel extends AndroidViewModel {
 
     static List<Guest> guestList = new ArrayList<>();
 
-    Observable<List<Guest>> guestObservable;
+    private PublishSubject<List<Guest>> guestObservable = PublishSubject.create();
 
     public GuestViewModel(@NonNull Application application) {
         super(application);
@@ -38,7 +39,7 @@ public class GuestViewModel extends AndroidViewModel {
 
     }
 
-    public List<Guest> getGuestList(){
+    public Observable<List<Guest>> getGuestList(){
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -47,28 +48,8 @@ public class GuestViewModel extends AndroidViewModel {
                     Guest currentGuest = ds.getValue(Guest.class);
                     guestList.add(currentGuest);
                 }
-                guestObservable = Observable.fromArray(guestList);
-                guestObservable.subscribe(new Observer<List<Guest>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+                guestObservable.onNext(guestList);
 
-                    }
-
-                    @Override
-                    public void onNext(List<Guest> guestList) {
-                        System.out.println("onNext: " + guestList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
             }
 
             @Override
@@ -77,13 +58,10 @@ public class GuestViewModel extends AndroidViewModel {
             }
         });
 
-        return guestList;
+        return guestObservable;
 
     }
 
-    public Observable<List<Guest>> getGuestListRx(){
-        return guestObservable.fromArray(guestList);
-    }
 
     public void addNewGuest(Guest guest){
         String databaseKey = reference.push().getKey();
